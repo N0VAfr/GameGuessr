@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Title</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="header">
+            <button id="random" onclick="getRandomGameName()">Random Game</button>
+        </div>
+
+        <img id="imgGame" src="" alt="" height="200px" width="auto">
+        <form method="post" action="randomGameManager.php">
+            <label>
+                ID
+                <input id="idGame" name="idGame" type="text" value="">
+            </label>
+            <label>
+                Date
+                <input id="dateGame" name="dateGame" type="date" value="">
+            </label>
+
+            <div class="gameInfo">
+                <input type="text" name="nameGame" id="nameGame" type="text" value="">
+                <input type="text" name="genreGame" id="genreGame" type="text" value="">
+                <input type="text" name="releasedGame" id="releasedGame" type="text" value="">
+                <input type="text" name="esrbGame" id="esrbGame" type="text" value="">
+                <input type="text" name="platformsGame" id="platformsGame" type="text" value="">
+                <input type="text" name="scoreGame" id="metacriticGame" type="text" value="">
+            </div>
+
+
+            <input type="submit" value="Choisir ce jeu">
+        </form>
+
+
+
+        <div id="output">
+            <a href="../index.html">Retour au menu</a>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
