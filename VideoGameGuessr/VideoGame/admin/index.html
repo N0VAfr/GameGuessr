@@ -7,11 +7,11 @@
 </head>
 <body>
     <div id="wrapper">
-
         <div id="header">
             <button id="random" onclick="getRandomGameName()">Random Game</button>
+            <input id="searchGame" type="text" value="">
+            <button id="choose" onclick="getGameByName()">Rechercher un jeu</button>
         </div>
-
         <img id="imgGame" src="" alt="" height="200px" width="auto">
         <form method="post" action="randomGameManager.php">
             <label>
@@ -31,13 +31,8 @@
                 <input type="text" name="platformsGame" id="platformsGame" type="text" value="">
                 <input type="text" name="scoreGame" id="metacriticGame" type="text" value="">
             </div>
-
-
             <input type="submit" value="Choisir ce jeu">
         </form>
-
-
-
         <div id="output">
             <a href="../index.html">Retour au menu</a>
         </div>

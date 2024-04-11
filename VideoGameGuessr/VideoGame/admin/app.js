@@ -12,6 +12,9 @@ dateGame.value = new Date(Date.now()).toISOString().split('T')[0];
 // Function to fetch a random video game name from the RAWG API
 async function getRandomGameName() {
 
+    const search = document.getElementById("searchGame");
+    search.value = "";
+
     let randomPage = Math.floor(Math.random() * 10)+1;
     // Fetch data from RAWG API
     const response = await fetch(`https://api.rawg.io/api/games?page=${randomPage}&key=67cfcc1cf5f24a0182d119ea30559a3a`);
@@ -64,6 +67,55 @@ async function getRandomGameName() {
     return randomGame;
 }
 
+async function getGameByName(){
+    let searchGame = document.getElementById("searchGame")
+    // Fetch data from RAWG API
+    const response = await fetch(`https://api.rawg.io/api/games?search=${searchGame.value}&key=67cfcc1cf5f24a0182d119ea30559a3a`);
+    const data = await response.json();
 
+
+    // Get the name of the random game
+    const searchedGame = data.results[0];
+
+    genreGame.value = "";
+
+    if (searchedGame.genres !== null){
+        for (let i = 0; i < searchedGame.genres.length; i++) {
+            if (genreGame.value !== ""){
+                genreGame.value += `,${searchedGame.genres[i].name}`;
+            }
+            else{
+                genreGame.value += searchedGame.genres[i].name;
+            }
+        }
+    }
+    platformsGame.value = "";
+    if (searchedGame.value !== null){
+        for (let i = 0; i < searchedGame.platforms.length; i++) {
+            if (platformsGame.value !== ""){
+                platformsGame.value += `,${searchedGame.platforms[i].platform.name}`;
+            }
+            else{
+                platformsGame.value += searchedGame.platforms[i].platform.name;
+            }
+        }
+    }
+
+
+
+    idGame.value = searchedGame.id;
+
+    nameGame.value = searchedGame.name;
+    releasedGame.value = searchedGame.released;
+    if (searchedGame.esrb_rating !== null){
+        esrbGame.value = searchedGame.esrb_rating.name;
+    }
+    metacriticGame.value = searchedGame.metacritic;
+    imgGame.src = searchedGame.background_image;
+
+    console.log(searchedGame);
+
+    return searchedGame;
+}
 
 

@@ -1,7 +1,5 @@
 <?php
 require_once("todayGame.php");
-
-
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +12,7 @@ require_once("todayGame.php");
 <body>
     <div id="wrapper">
 
-        <input type="hidden" id="todayId" value="<?php echo getTodayGame()?>">
+        <input type="hidden" id="todayId" value="<?php echo getTodayGame()[0]?>">
 
 
         <label for="guestGame">

@@ -1,11 +1,21 @@
 const cardContainer = document.getElementById('card-container');
+const id = document.getElementById("todayId")
+if (id.value === "Pas de jeu aujourd'hui"){
+    id.type = "";
+}
 
-function createCard(title, genre, released, esrb, score) {
+
+function createCard(title, img, genre, released, esrb, score) {
     const card = document.createElement('div');
     card.classList.add('card');
+    card.
 
     const cardTitle = document.createElement('h2');
     cardTitle.textContent = title;
+
+    const cardContentImage = document.createElement('img');
+    cardContentImage.src = img;
+    cardContentImage.style = "height:200px; width:auto;";
 
     const cardContentGenre = document.createElement('p');
     cardContentGenre.textContent = "Genre : " + genre;
@@ -20,6 +30,7 @@ function createCard(title, genre, released, esrb, score) {
     cardContentScore.textContent = "Metacritic : " + score;
 
     card.appendChild(cardTitle);
+    card.appendChild(cardContentImage);
     card.appendChild(cardContentGenre);
     card.appendChild(cardContentReleased);
     card.appendChild(cardContentEsrb);
@@ -66,6 +77,7 @@ async function getGameByName() {
 
     const card1 = createCard(
         "Nom : " + data.results[0].name,
+        data.results[0].background_image,
         genres,
         data.results[0].released,
         data.results[0].esrb_rating.name,
