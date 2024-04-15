@@ -1,5 +1,10 @@
 <?php
 require_once("todayGame.php");
+if(getTodayGame() === false){
+    $today = null;
+}else{
+    $today = getTodayGame()[0];
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,16 +16,12 @@ require_once("todayGame.php");
 </head>
 <body>
     <div id="wrapper">
-
-        <input type="hidden" id="todayId" value="<?php echo getTodayGame()[0]?>">
-
-
+        <input type="hidden" id="todayId" value="<?php echo $today?>">
         <label for="guestGame">
             Guest The Game
         </label>
         <input id="guestGame" name="guestGame" type="text" value="">
         <button id="searchGame" onclick="getGameByName()">Rechercher</button>
-
         <div id="result">
             <p id="idGame"></p>
         </div>

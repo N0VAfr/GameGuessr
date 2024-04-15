@@ -8,10 +8,10 @@ function getTodayGame()
     $stmt->execute();
     $result = $stmt->fetchAll();
     if(empty($result)){
-        exit();
+        return array("nom");
     }
     foreach ( $result as $row){
-        $idGameHash = hash('sha256', $row["idGame"]);
+        $idGameHash = $row["idGame"];
         $dateHash = hash('sha256', $row["date"]);
         $nameHash = hash('sha256', $row["name"]);
         $genreHash = hash('sha256', $row["genre"]);
