@@ -15,7 +15,7 @@ async function getRandomGameName() {
     const search = document.getElementById("searchGame");
     search.value = "";
 
-    let randomPage = Math.floor(Math.random() * 10)+1;
+    let randomPage = Math.floor(Math.random() * 20)+1;
     // Fetch data from RAWG API
     const response = await fetch(`https://api.rawg.io/api/games?page=${randomPage}&key=67cfcc1cf5f24a0182d119ea30559a3a`);
     const data = await response.json();

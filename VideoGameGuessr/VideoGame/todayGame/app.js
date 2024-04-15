@@ -8,7 +8,6 @@ if (id.value === "Pas de jeu aujourd'hui"){
 function createCard(title, img, genre, released, esrb, score) {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.
 
     const cardTitle = document.createElement('h2');
     cardTitle.textContent = title;
@@ -75,16 +74,23 @@ async function getGameByName() {
         }
     }
 
+    let esrbRating = "Not Rated"; // Default text for games without an ESRB rating
+    if (data.results[0].esrb_rating !== null) {
+        esrbRating = data.results[0].esrb_rating.name;
+    }
+
     const card1 = createCard(
         "Nom : " + data.results[0].name,
         data.results[0].background_image,
         genres,
         data.results[0].released,
-        data.results[0].esrb_rating.name,
+
+
+        esrbRating,
         data.results[0].metacritic
     );
 
-    cardContainer.appendChild(card1);
+    cardContainer.insertBefore(card1, cardContainer.firstChild);
 
     return data;
 }
